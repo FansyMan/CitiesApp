@@ -23,6 +23,7 @@ class CollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Cell Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundViewOfCell.backgroundColor = .red
@@ -32,17 +33,14 @@ class CollectionViewCell: UICollectionViewCell {
         fatalError()
     }
     
+    // MARK: - Cell Setup
     func setupCell() {
-        
-        
-        guard let cityList = cityList else {
-            return
-        }
-
+        guard let cityList = cityList else { return }
         let color = cityList.color
         backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX(color)
     }
     
+    // MARK: - Constraints
     func setConstraints() {
         self.addSubview(backgroundViewOfCell)
         NSLayoutConstraint.activate([
@@ -52,6 +50,5 @@ class CollectionViewCell: UICollectionViewCell {
             backgroundViewOfCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
     }
-    
 }
 

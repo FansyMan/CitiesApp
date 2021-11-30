@@ -23,7 +23,6 @@ class CurrentListTableViewCell: UITableViewCell {
         return label
     }()
     
-    
     var stackView = UIStackView()
     var city: City? {
         didSet {
@@ -31,12 +30,11 @@ class CurrentListTableViewCell: UITableViewCell {
         }
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
     }
     
+    // MARK: - Cell Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -48,6 +46,7 @@ class CurrentListTableViewCell: UITableViewCell {
         fatalError("init coder")
     }
     
+    // MARK: - Setup Views
     func setupViews() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
@@ -58,14 +57,14 @@ class CurrentListTableViewCell: UITableViewCell {
         self.addSubview(stackView)
     }
     
+    // MARK: - Cell Setup
     func setupCell() {
         cityLabel.text = city?.name
         ageLabel.text = city?.age
-        
-        
     }
 }
 
+// MARK: - Constraints
 extension CurrentListTableViewCell {
     private func setConstraints() {
         

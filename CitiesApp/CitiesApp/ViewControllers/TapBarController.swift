@@ -10,6 +10,7 @@ import UIKit
 class TapBarController: UITabBarController {
     
     override func viewDidLoad() {
+        
         setupTapBar()
     }
     
@@ -17,10 +18,10 @@ class TapBarController: UITabBarController {
         
         let currentListVC = createControllers(viewController: CurrentListViewController(), itemName: "Cities", itemImage: "list.dash")
         let secondVC = createControllers(viewController: SecondViewController(), itemName: "second", itemImage: "sun.max")
-        let createVC = createControllers(viewController: CreateNewListViewController(), itemName: "create", itemImage: "plus")
+//        let createVC = createControllers(viewController: CreateNewListViewController(), itemName: "create", itemImage: "plus")
         
         
-        viewControllers = [createVC, currentListVC, secondVC]
+        viewControllers = [currentListVC, secondVC]
         
     }
     
@@ -29,6 +30,7 @@ class TapBarController: UITabBarController {
         
         let item = UITabBarItem(title: itemName, image: UIImage(systemName: itemImage)?.withAlignmentRectInsets(.init(top: 10, left: 0, bottom: 0, right: 0)), tag: 0)
         item.titlePositionAdjustment = .init(horizontal: 0, vertical: 10)
+        
         
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem = item

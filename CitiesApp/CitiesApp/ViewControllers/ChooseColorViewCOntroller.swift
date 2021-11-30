@@ -13,7 +13,6 @@ class ChooseColorViewController: UITableViewController {
     
     let headerNames = ["RED","ORANGE","YELLOW","GREEN","BLUE","DEEP BLUE","PURPLE"]
     
-//    private var citiesList: CityList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +24,6 @@ class ChooseColorViewController: UITableViewController {
         tableView.bounces = false
         tableView.register(ColorTableViewCell.self, forCellReuseIdentifier: colorTableViewCell)
         tableView.register(HeaderTableViewCell.self, forHeaderFooterViewReuseIdentifier: idColorHeader)
-        
-        title = "Выбрать цвет списка"
-        
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,6 +56,7 @@ class ChooseColorViewController: UITableViewController {
         return 30
     }
     
+    // MARK: - Did Select
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0: setColors(color: "BE2813")
@@ -72,6 +68,7 @@ class ChooseColorViewController: UITableViewController {
         case 6: setColors(color: "2D038F")
         default: setColors(color: "FFFFFF")
         }
+        dismiss(animated: true, completion: nil)
     }
     
     private func setColors(color: String) {

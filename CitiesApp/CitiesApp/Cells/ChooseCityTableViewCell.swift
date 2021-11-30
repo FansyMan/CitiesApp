@@ -31,23 +31,22 @@ class ChooseCityTableViewCell: UITableViewCell {
         }
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
     }
     
+    // MARK: - Cell Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init coder")
     }
     
+    // MARK: - Setup Views
     func setupViews() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
@@ -55,6 +54,7 @@ class ChooseCityTableViewCell: UITableViewCell {
         self.addSubview(cityLabel)
     }
     
+    // MARK: - Setup Cell
     func setupCell() {
         cityLabel.text = city?.name
         switch city?.picked {
@@ -69,9 +69,9 @@ class ChooseCityTableViewCell: UITableViewCell {
         let gestureRecognizer = UITapGestureRecognizer()
         gestureRecognizer.addTarget(self, action: #selector(pickCity))
         self.addGestureRecognizer(gestureRecognizer)
-        
     }
     
+    // MARK: - Pick City OBJC Func
     @objc func pickCity() {
         switch city?.picked {
         case true:
@@ -82,9 +82,9 @@ class ChooseCityTableViewCell: UITableViewCell {
             break
         }
     }
-    
 }
 
+// MARK: - Constraints
 extension ChooseCityTableViewCell {
     private func setConstraints() {
         

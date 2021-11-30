@@ -21,16 +21,30 @@ class SecondViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.bounces = false
+        collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
+    private let addNewListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.tintColor = UIColor.systemBlue
+        button.layer.cornerRadius = 50
+        button.addTarget(self, action: #selector(jumpToCreateNewListViewControler), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private var fullScreenMode: Bool!
     var service: ListService!
     var allLists: [CityList]!
     
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,13 +61,7 @@ class SecondViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-       
-        
-    }
-    
+    // MARK: - Swipes Setup
     private func swipesActions() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(fullScreenActivate))
         swipeUp.direction = .up
@@ -65,22 +73,29 @@ class SecondViewController: UIViewController {
         
     }
     
+    // MARK: - Objc
     @objc func fullScreenActivate() {
         backgroundView.backgroundColor = .blue
-        
-        
+    }
+    
+    @objc func jumpToCreateNewListViewControler() {
+        let destinationVC = CreateNewListViewController()
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     @objc func fullScreenDismiss() {
-        backgroundView.backgroundColor = .red
+        backgroundView.backgroundColor = .systemGray5
     }
     
+    // MARK: - SetupViews
     private func setupViews() {
-        
         view.addSubview(backgroundView)
+        backgroundView.addSubview(addNewListButton)
         backgroundView.addSubview(collectionView)
+        
     }
     
+    // MARK: - SetupDelegates
     private func setupDelegates() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -88,7 +103,7 @@ class SecondViewController: UIViewController {
     
 }
 
-
+// MARK: - Constraints
 extension SecondViewController {
     private func setConstraints() {
         
@@ -100,15 +115,23 @@ extension SecondViewController {
         ])
         
         NSLayoutConstraint.activate([
-            collectionView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            addNewListButton.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
+            addNewListButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 15),
+            addNewListButton.widthAnchor.constraint(equalToConstant: 100),
+            addNewListButton.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
             collectionView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
-            collectionView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-30),
+            collectionView.leadingAnchor.constraint(equalTo: addNewListButton.trailingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -15),
             collectionView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
         
 }
 
+// MARK: - Collection View Setups
 extension SecondViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -130,9 +153,9 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let list = allLists[indexPath.item]
-        let destinationVC = CurrentListViewController()
-        destinationVC.currentList = list
-    }
-    
-    
+        let destinationVC = self.navigationController?.viewControllers[1] as? CurrentListViewController
+        destinationVC?.currentList = list
+        self.navigationController?.pushViewController(destinationVC!, animated: true)
+        
+    }  
 }

@@ -16,24 +16,24 @@ class HeaderTableViewCell: UITableViewHeaderFooterView {
         return label
     }()
     
+    // MARK: - Cell Init
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         headerLabel.textColor = .black
         self.contentView.backgroundColor = .white
-        
         setConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
+    // MARK: - Config Header
     func headerConfigure(array: [String], section: Int) {
         headerLabel.text = array[section]
-        
     }
     
+    // MARK: - Constraints
     func setConstraints() {
         self.addSubview(headerLabel)
         NSLayoutConstraint.activate([
@@ -41,5 +41,4 @@ class HeaderTableViewCell: UITableViewHeaderFooterView {
             headerLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
     }
-    
 }

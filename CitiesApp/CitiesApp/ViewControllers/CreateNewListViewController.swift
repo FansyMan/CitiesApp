@@ -65,7 +65,6 @@ class CreateNewListViewController: UIViewController {
         button.frame.size.width = 250
         button.frame.size.height = 50
         button.addTarget(self, action: #selector(saveNewList), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints =  false
         return button
     }()
     
@@ -79,7 +78,6 @@ class CreateNewListViewController: UIViewController {
         button.frame.size.width = 250
         button.frame.size.height = 100
         button.addTarget(self, action: #selector(dismissCreatingNewList), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints =  false
         return button
     }()
     
@@ -98,7 +96,6 @@ class CreateNewListViewController: UIViewController {
         button.frame.size.width = 100
         button.frame.size.height = 25
         button.addTarget(self, action: #selector(chooseColor), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints =  false
         return button
     }()
     
@@ -111,7 +108,6 @@ class CreateNewListViewController: UIViewController {
 
     
     // MARK: - View Did Load
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -152,6 +148,7 @@ class CreateNewListViewController: UIViewController {
         backgroundView.addSubview(buttonsStackView)
     }
     
+    // MARK: - SetupDelegates
     private func setupDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -164,15 +161,16 @@ class CreateNewListViewController: UIViewController {
                                longName: longNameTextField.text ?? "unknown",
                                cities: nil)
         print(newList)
-        
     }
     
     @objc private func dismissCreatingNewList() {
-        
+        navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - ChooseColor Button
     @objc func chooseColor() {
         let destinationVC = ChooseColorViewController()
+        destinationVC.modalPresentationStyle = .automatic
         navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
@@ -252,6 +250,5 @@ extension CreateNewListViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
 }
 

@@ -28,6 +28,7 @@ class ColorTableViewCell: UITableViewCell {
         fatalError()
     }
     
+    // MARK: - Config Cell
     func configureCell(indexPath: IndexPath) {
         switch indexPath.section {
         case 0: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("BE2813")
@@ -37,10 +38,10 @@ class ColorTableViewCell: UITableViewCell {
         case 4: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("2D7FC1")
         case 5: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("1A4766")
         default: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("2D038F")
-
         }
     }
     
+    // MARK: - Constraints
     func setConstraints() {
         self.addSubview(backgroundViewOfCell)
         NSLayoutConstraint.activate([
@@ -50,5 +51,4 @@ class ColorTableViewCell: UITableViewCell {
             backgroundViewOfCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1)
         ])
     }
-    
 }
