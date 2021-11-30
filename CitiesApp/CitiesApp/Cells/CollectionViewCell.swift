@@ -12,7 +12,7 @@ class CollectionViewCell: UICollectionViewCell {
     let backgroundViewOfCell: UIView = {
        var view = UIView()
        view.backgroundColor = .white
-       view.layer.cornerRadius = 50
+       view.layer.cornerRadius = 40
        view.translatesAutoresizingMaskIntoConstraints = false
        return view
    }()

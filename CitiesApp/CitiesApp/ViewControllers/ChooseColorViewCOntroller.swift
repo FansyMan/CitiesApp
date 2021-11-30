@@ -68,12 +68,13 @@ class ChooseColorViewController: UITableViewController {
         case 6: setColors(color: "2D038F")
         default: setColors(color: "FFFFFF")
         }
-        dismiss(animated: true, completion: nil)
+        
+
     }
     
     private func setColors(color: String) {
-        let destinationVC = self.navigationController?.viewControllers[0] as? CreateNewListViewController
-        destinationVC?.hexColorCell = color
+        let destinationVC = CreateNewListViewController()
+        destinationVC.hexColorCell = color
         self.navigationController?.popViewController(animated: true)
     }
     

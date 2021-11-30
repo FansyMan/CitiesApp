@@ -34,8 +34,8 @@ class CurrentListViewController: UIViewController {
         setConstraints()
         setupDelegates()
         service = ListService()
-        let allLists = service.getKists()
-        currentList = allLists[2]
+        
+        
         
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized(gestureRecognizer:)))
             self.tableView.addGestureRecognizer(longpress)
@@ -44,6 +44,10 @@ class CurrentListViewController: UIViewController {
     // MARK: - View Will Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let allLists = service.getKists()
+        currentList = allLists[2]
+        let listTitle = currentList?.shortName
+        title = listTitle
         guard let currentList = currentList else { return }
         cities = currentList.cities!
         tableView.reloadData()

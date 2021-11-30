@@ -21,12 +21,12 @@ let city10 = City(name: "Drezden", age: "123", picked: false)
 class ListService {
     func getKists() -> [CityList] {
         return [
-            CityList(color: "F07F5A", shortName: "", longName: "", cities: [city1, city2]),
-            CityList(color: "2D7FC1", shortName: "", longName: "", cities: [city3, city4, city5]),
-            CityList(color: "BE2813", shortName: "", longName: "", cities: [city5, city6, city7, city8, city9, city10]),
-            CityList(color: "F07F5A", shortName: "", longName: "", cities: [city5, city6, city7, city8, city9, city10]),
-            CityList(color: "2D7FC1", shortName: "", longName: "", cities: [city5, city6, city7, city8, city9, city10]),
-            CityList(color: "BE2813", shortName: "", longName: "", cities: [city5, city6, city7, city8, city9, city10])
+            CityList(color: "F07F5A", shortName: "one", longName: "", cities: [city1, city2]),
+            CityList(color: "2D7FC1", shortName: "two", longName: "", cities: [city3, city4, city5]),
+            CityList(color: "BE2813", shortName: "three", longName: "", cities: [city5, city6, city7, city8, city9, city10]),
+            CityList(color: "F07F5A", shortName: "four", longName: "", cities: [city5, city6, city7, city8, city9, city10]),
+            CityList(color: "2D7FC1", shortName: "five", longName: "", cities: [city5, city6, city7, city8, city9, city10]),
+            CityList(color: "BE2813", shortName: "six", longName: "", cities: [city5, city6, city7, city8, city9, city10])
             ]
     }
 }

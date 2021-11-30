@@ -19,8 +19,10 @@ class SecondViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 10
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.bounces = false
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -34,10 +36,18 @@ class SecondViewController: UIViewController {
         button.layer.borderColor = UIColor.systemBlue.cgColor
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.tintColor = UIColor.systemBlue
-        button.layer.cornerRadius = 50
+        button.layer.cornerRadius = 40
         button.addTarget(self, action: #selector(jumpToCreateNewListViewControler), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    private let cityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Выберите список"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     private var fullScreenMode: Bool!
@@ -92,6 +102,7 @@ class SecondViewController: UIViewController {
         view.addSubview(backgroundView)
         backgroundView.addSubview(addNewListButton)
         backgroundView.addSubview(collectionView)
+        backgroundView.addSubview(cityLabel)
         
     }
     
@@ -117,15 +128,20 @@ extension SecondViewController {
         NSLayoutConstraint.activate([
             addNewListButton.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
             addNewListButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 15),
-            addNewListButton.widthAnchor.constraint(equalToConstant: 100),
-            addNewListButton.heightAnchor.constraint(equalToConstant: 100)
+            addNewListButton.widthAnchor.constraint(equalToConstant: 80),
+            addNewListButton.heightAnchor.constraint(equalToConstant: 80)
         ])
         
         NSLayoutConstraint.activate([
             collectionView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: addNewListButton.trailingAnchor, constant: 10),
+            collectionView.leadingAnchor.constraint(equalTo: addNewListButton.trailingAnchor, constant: 5),
             collectionView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -15),
             collectionView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
+            cityLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            cityLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20)
         ])
     }
         
@@ -148,14 +164,31 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: 80, height: 80)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let list = allLists[indexPath.item]
-        let destinationVC = self.navigationController?.viewControllers[1] as? CurrentListViewController
-        destinationVC?.currentList = list
-        self.navigationController?.pushViewController(destinationVC!, animated: true)
+        let selectedCell = collectionView.cellForItem(at: indexPath)  as? CollectionViewCell
+        collectionView.bringSubviewToFront(selectedCell!)
+
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: [], animations: {
+            selectedCell?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            })
         
-    }  
+        let list = allLists[indexPath.item]
+        let destinaationVC = navigationController?.viewControllers[0] as? CurrentListViewController
+        destinaationVC?.currentList = list
+        cityLabel.text = list.shortName
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let unselectedCell = collectionView.cellForItem(at: indexPath)  as? CollectionViewCell
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: [], animations: {
+            unselectedCell?.transform = .identity
+        })
+        
+        
+        
+    }
 }
