@@ -8,30 +8,17 @@
 import UIKit
 
 extension UIViewController {
-    func createListNamesTextFields() -> UIView {
+    func createListNamesTextFields(shortNameTextFielf: UITextField, longNameTextFields: UITextField) -> UIView {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        let nameTextField: UITextField = {
-            let textField = UITextField()
-            textField.borderStyle = .none
-            textField.clearButtonMode = .whileEditing
-            return textField
-        }()
-
-        let ageTextField: UITextField = {
-            let textField = UITextField()
-            textField.borderStyle = .none
-            textField.clearButtonMode = .whileEditing
-            textField.keyboardType = .numberPad
-            return textField
-        }()
+        
         
         let nameLabel = createLabel(text: "Короткое имя списка:")
         let ageLabel = createLabel(text: "Длинное имя списка:")
         
-        let nameView = createTextFieldView(textField: nameTextField, label: nameLabel)
-        let ageView = createTextFieldView(textField: ageTextField, label: ageLabel)
+        let nameView = createTextFieldView(textField: shortNameTextFielf, label: nameLabel)
+        let ageView = createTextFieldView(textField: longNameTextFields, label: ageLabel)
         
        
         

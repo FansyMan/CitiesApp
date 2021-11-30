@@ -19,6 +19,7 @@ class TapBarController: UITabBarController {
         let secondVC = createControllers(viewController: SecondViewController(), itemName: "second", itemImage: "sun.max")
         let createVC = createControllers(viewController: CreateNewListViewController(), itemName: "create", itemImage: "plus")
         
+        
         viewControllers = [createVC, currentListVC, secondVC]
         
     }

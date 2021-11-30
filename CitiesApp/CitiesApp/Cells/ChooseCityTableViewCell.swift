@@ -16,7 +16,7 @@ class ChooseCityTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let checkBoxImage: UIImageView = {
+    let checkBoxImage: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
@@ -100,6 +100,5 @@ extension ChooseCityTableViewCell {
             cityLabel.leadingAnchor.constraint(equalTo: checkBoxImage.trailingAnchor, constant: 20),
             cityLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
-        
-    }
+            }
 }

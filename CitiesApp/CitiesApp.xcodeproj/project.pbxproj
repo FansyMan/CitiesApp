@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50D369852754DA6C00A8F8FF /* ColorFromHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */; };
+		50D369872754F8D500A8F8FF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369862754F8D500A8F8FF /* CollectionViewCell.swift */; };
+		50D369CA27555F1B00A8F8FF /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369C927555F1B00A8F8FF /* List.swift */; };
+		50D369CC27555F3000A8F8FF /* ListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369CB27555F2F00A8F8FF /* ListService.swift */; };
+		50D369CE2755608000A8F8FF /* CurrentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369CD2755608000A8F8FF /* CurrentListTableViewCell.swift */; };
 		50FCEA4D274F750700ADE605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA4C274F750700ADE605 /* AppDelegate.swift */; };
 		50FCEA57274F750700ADE605 /* CitiesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA55274F750700ADE605 /* CitiesApp.xcdatamodeld */; };
 		50FCEA59274F750900ADE605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50FCEA58274F750900ADE605 /* Assets.xcassets */; };
@@ -23,6 +28,9 @@
 		50FCEA8F274FA09200ADE605 /* ChooseCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA8E274FA09200ADE605 /* ChooseCityTableViewCell.swift */; };
 		50FCEA92274FB34B00ADE605 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA91274FB34B00ADE605 /* City.swift */; };
 		50FCEA94274FB67100ADE605 /* CitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA93274FB67100ADE605 /* CitiesService.swift */; };
+		50FCEAA22753657E00ADE605 /* ChooseColorViewCOntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEAA12753657E00ADE605 /* ChooseColorViewCOntroller.swift */; };
+		50FCEAA42754BEE700ADE605 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEAA32754BEE700ADE605 /* ColorTableViewCell.swift */; };
+		50FCEAA62754C01C00ADE605 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEAA52754C01C00ADE605 /* HeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFromHexExtension.swift; sourceTree = "<group>"; };
+		50D369862754F8D500A8F8FF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		50D369C927555F1B00A8F8FF /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		50D369CB27555F2F00A8F8FF /* ListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListService.swift; sourceTree = "<group>"; };
+		50D369CD2755608000A8F8FF /* CurrentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentListTableViewCell.swift; sourceTree = "<group>"; };
 		50FCEA49274F750700ADE605 /* CitiesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CitiesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FCEA4C274F750700ADE605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50FCEA56274F750700ADE605 /* CitiesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CitiesApp.xcdatamodel; sourceTree = "<group>"; };
@@ -63,6 +76,9 @@
 		50FCEA8E274FA09200ADE605 /* ChooseCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityTableViewCell.swift; sourceTree = "<group>"; };
 		50FCEA91274FB34B00ADE605 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		50FCEA93274FB67100ADE605 /* CitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesService.swift; sourceTree = "<group>"; };
+		50FCEAA12753657E00ADE605 /* ChooseColorViewCOntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseColorViewCOntroller.swift; sourceTree = "<group>"; };
+		50FCEAA32754BEE700ADE605 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		50FCEAA52754C01C00ADE605 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +129,7 @@
 		50FCEA4B274F750700ADE605 /* CitiesApp */ = {
 			isa = PBXGroup;
 			children = (
+				50FCEA9E27535FE700ADE605 /* Protocols */,
 				50FCEA90274FB33B00ADE605 /* Models */,
 				50FCEA8D274FA07600ADE605 /* Cells */,
 				50FCEA88274F9F5400ADE605 /* Extensions */,
@@ -150,6 +167,7 @@
 				50FCEA82274F777F00ADE605 /* SecondViewController.swift */,
 				50FCEA84274F786100ADE605 /* TapBarController.swift */,
 				50FCEA86274F9D2400ADE605 /* CreateNewListViewController.swift */,
+				50FCEAA12753657E00ADE605 /* ChooseColorViewCOntroller.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -159,6 +177,7 @@
 			children = (
 				50FCEA89274F9F7600ADE605 /* UIStackView+Ext.swift */,
 				50FCEA8A274F9F7600ADE605 /* UIViewController+Ext.swift */,
+				50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +186,10 @@
 			isa = PBXGroup;
 			children = (
 				50FCEA8E274FA09200ADE605 /* ChooseCityTableViewCell.swift */,
+				50FCEAA32754BEE700ADE605 /* ColorTableViewCell.swift */,
+				50FCEAA52754C01C00ADE605 /* HeaderTableViewCell.swift */,
+				50D369862754F8D500A8F8FF /* CollectionViewCell.swift */,
+				50D369CD2755608000A8F8FF /* CurrentListTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -176,8 +199,17 @@
 			children = (
 				50FCEA91274FB34B00ADE605 /* City.swift */,
 				50FCEA93274FB67100ADE605 /* CitiesService.swift */,
+				50D369C927555F1B00A8F8FF /* List.swift */,
+				50D369CB27555F2F00A8F8FF /* ListService.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		50FCEA9E27535FE700ADE605 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,16 +343,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				50FCEA8F274FA09200ADE605 /* ChooseCityTableViewCell.swift in Sources */,
+				50FCEAA22753657E00ADE605 /* ChooseColorViewCOntroller.swift in Sources */,
 				50FCEA8B274F9F7600ADE605 /* UIStackView+Ext.swift in Sources */,
+				50D369CE2755608000A8F8FF /* CurrentListTableViewCell.swift in Sources */,
+				50FCEAA42754BEE700ADE605 /* ColorTableViewCell.swift in Sources */,
 				50FCEA83274F777F00ADE605 /* SecondViewController.swift in Sources */,
+				50D369CC27555F3000A8F8FF /* ListService.swift in Sources */,
 				50FCEA85274F786100ADE605 /* TapBarController.swift in Sources */,
 				50FCEA57274F750700ADE605 /* CitiesApp.xcdatamodeld in Sources */,
 				50FCEA87274F9D2400ADE605 /* CreateNewListViewController.swift in Sources */,
 				50FCEA92274FB34B00ADE605 /* City.swift in Sources */,
 				50FCEA81274F757700ADE605 /* CurrentListViewController.swift in Sources */,
+				50D369872754F8D500A8F8FF /* CollectionViewCell.swift in Sources */,
+				50FCEAA62754C01C00ADE605 /* HeaderTableViewCell.swift in Sources */,
 				50FCEA94274FB67100ADE605 /* CitiesService.swift in Sources */,
+				50D369852754DA6C00A8F8FF /* ColorFromHexExtension.swift in Sources */,
 				50FCEA8C274F9F7600ADE605 /* UIViewController+Ext.swift in Sources */,
 				50FCEA4D274F750700ADE605 /* AppDelegate.swift in Sources */,
+				50D369CA27555F1B00A8F8FF /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

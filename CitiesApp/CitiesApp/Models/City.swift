@@ -12,3 +12,5 @@ struct City {
     let age: String
     var picked: Bool
 }
+
+
