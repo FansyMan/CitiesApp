@@ -12,13 +12,9 @@ class CollectionViewCell: UICollectionViewCell {
     private let plusImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
-        imageView.clipsToBounds = true
-        imageView.backgroundColor = .cyan
         imageView.frame.size.width = 120
         imageView.frame.size.height = 120
         imageView.layer.cornerRadius = 60
-
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -40,8 +36,8 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func setupCell(cityList: CityList) {
-                    let color = cityList.color
-                    backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX(color)
+        let color = cityList.color
+        backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX(color)
 
     }
     
@@ -49,16 +45,6 @@ class CollectionViewCell: UICollectionViewCell {
         plusImageView.image = UIImage(systemName: "plus")
                     self.addSubview(plusImageView)
     }
-    
-//    func setupCell(cityList: CityList, indexPath: IndexPath) {
-//        if indexPath == [0,0] {
-//            plusImageView.image = UIImage(systemName: "plus")
-//            self.addSubview(plusImageView)
-//        } else {
-//            let color = cityList.color
-//            backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX(color)
-//        }
-//    }
     
     // MARK: - Constraints
     func setConstraints() {

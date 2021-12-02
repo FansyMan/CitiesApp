@@ -7,8 +7,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-    
+class ChangeListViewController: UIViewController {
     
     
     private let collectionView: UICollectionView = {
@@ -17,10 +16,10 @@ class SecondViewController: UIViewController {
         layout.minimumLineSpacing = 20
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.bounces = false
-        collectionView.backgroundColor = .systemGray4
         collectionView.isPagingEnabled = true
         collectionView.contentInset = UIEdgeInsets(top: (140-120)/2, left: (UIScreen.main.bounds.width-120)/2, bottom: (140-120)/2, right: (UIScreen.main.bounds.width-120)/2)
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -42,28 +41,6 @@ class SecondViewController: UIViewController {
         return view
     }()
     
-    private let chooseCurrentListButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.systemBlue.cgColor
-        button.tintColor = UIColor.systemBlue
-        button.layer.cornerRadius = 25
-        button.setTitle("Создать", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let listButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.systemBlue.cgColor
-        button.tintColor = UIColor.systemBlue
-        button.layer.cornerRadius = 25
-        button.setImage(UIImage(systemName: "list.dash"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     var service: ListService!
     var allLists: [CityList]!
     weak var listDelegate: UpdateCurrentList?
@@ -73,7 +50,7 @@ class SecondViewController: UIViewController {
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray5
         service = ListService()
         allLists = service.getKists()
         
@@ -83,9 +60,6 @@ class SecondViewController: UIViewController {
     }
     // MARK: - SetupViews
     private func setupViews() {
-        view.addSubview(tapBarView)
-        tapBarView.addSubview(chooseCurrentListButton)
-        tapBarView.addSubview(listButton)
         view.addSubview(collectionView)
         view.addSubview(cityLabel)
         
@@ -100,32 +74,11 @@ class SecondViewController: UIViewController {
 }
 
 // MARK: - Constraints
-extension SecondViewController {
+extension ChangeListViewController {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            tapBarView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25),
-            tapBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tapBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            tapBarView.heightAnchor.constraint(equalToConstant: 80)
-        ])
-        
-        NSLayoutConstraint.activate([
-            listButton.centerYAnchor.constraint(equalTo: tapBarView.centerYAnchor),
-            listButton.leadingAnchor.constraint(equalTo: tapBarView.leadingAnchor, constant: 20),
-            listButton.widthAnchor.constraint(equalToConstant: 100),
-            listButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        NSLayoutConstraint.activate([
-            chooseCurrentListButton.centerYAnchor.constraint(equalTo: tapBarView.centerYAnchor),
-            chooseCurrentListButton.trailingAnchor.constraint(equalTo: tapBarView.trailingAnchor, constant: -20),
-            chooseCurrentListButton.widthAnchor.constraint(equalToConstant: 100),
-            chooseCurrentListButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: tapBarView.bottomAnchor, constant: 20),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             collectionView.heightAnchor.constraint(equalToConstant: 140)
@@ -140,10 +93,10 @@ extension SecondViewController {
 }
 
 // MARK: - Collection View Setups
-extension SecondViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+extension ChangeListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allLists.count
+        return allLists.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -175,14 +128,14 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
         
         if indexPath == [0,0] {
             let destinationVC = CreateNewListViewController()
-            destinationVC.modalPresentationStyle = .automatic
+            destinationVC.modalPresentationStyle = .fullScreen
+            destinationVC.saveDelegate = self
             present(destinationVC, animated: true, completion: nil)
         } else {
         
         let list = allLists[indexPath.item-1]
         listDelegate?.updateCityList(list: list)
         cityLabel.text = list.shortName
-        dismiss(animated: true, completion: nil)
         }
     }
     
@@ -193,20 +146,24 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
         })
     }
     
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        let cellWithIncludingSpacing = 160 + layout.minimumLineSpacing
-//        
-//        var offset = targetContentOffset.pointee
-//        let index = (offset.x + scrollView.contentInset.left) / cellWithIncludingSpacing
-//        let roundedIndex = round(index)
-//        
-//        offset = CGPoint(x: roundedIndex * cellWithIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
-//        
-//        targetContentOffset.pointee = offset
-//        
-//        
-//    }
-    
-    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWithIncludingSpacing = 160 + layout.minimumLineSpacing
+        
+        var offset = targetContentOffset.pointee
+        let index = (offset.x + scrollView.contentInset.left) / cellWithIncludingSpacing
+        let roundedIndex = round(index)
+        
+        offset = CGPoint(x: roundedIndex * cellWithIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
+        
+        targetContentOffset.pointee = offset
+        
+    }
+}
+
+extension ChangeListViewController: SaveNewListProtocol {
+    func addNewList(list: CityList) {
+        allLists.append(list)
+        collectionView.reloadData()
+    }
 }

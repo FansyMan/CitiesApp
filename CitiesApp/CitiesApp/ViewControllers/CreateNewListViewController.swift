@@ -105,21 +105,26 @@ class CreateNewListViewController: UIViewController {
     private var colorStackView = UIStackView()
     var cities: [City]!
     var service: CitiesService!
+    var listService: ListService!
+    var allLists: [CityList]!
     var hexColorCell = "FFFFFF"
     var choosenRows: [Int : Bool] = [:]
+    weak var saveDelegate: SaveNewListProtocol!
     
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         service = CitiesService()
+        listService = ListService()
+        allLists = listService.getKists()
+        
         cities = service.getCities()
         setupViews()
         setConstraints()
         setupDelegates()
         
         tableView.allowsMultipleSelectionDuringEditing = true
-//        tableView.setEditing(true, animated: false)
         
     }
     
@@ -160,18 +165,18 @@ class CreateNewListViewController: UIViewController {
     
     // MARK: - Save Button Setup
     @objc private func saveNewList() {
-        let newList = CityList(color: hexColorCell,
-                               shortName: shortNameTextField.text ?? "unknown",
-                               longName: longNameTextField.text ?? "unknown",
-                               cities: nil)
+        
         var choosenCities = [City]()
-       
         for city in choosenRows {
             let choosenCity = cities[city.key]
             choosenCities.append(choosenCity)
         }
-        
-        print(choosenCities)
+        let newList = CityList(color: hexColorCell,
+                                       shortName: shortNameTextField.text ?? "unknown",
+                                       longName: longNameTextField.text ?? "unknown",
+                                       cities: choosenCities)
+        saveDelegate.addNewList(list: newList)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func dismissCreatingNewList() {
@@ -238,8 +243,6 @@ extension CreateNewListViewController {
             buttonsStackView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-       
-        
     }
 }
 
@@ -299,13 +302,10 @@ extension CreateNewListViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 //        choosenRows.removeValue(forKey: indexPath.row)
     }
-    
 }
 
 extension CreateNewListViewController: ChooseColorProtocol {
     func updateColor(color: String) {
         hexColorCell = color
     }
-    
-    
 }

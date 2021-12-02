@@ -11,5 +11,5 @@ struct CityList {
     var color: String
     var shortName: String
     var longName: String
-    var cities: [City]?
+    var cities: [City]
 }

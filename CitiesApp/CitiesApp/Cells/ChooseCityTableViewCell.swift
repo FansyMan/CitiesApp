@@ -16,7 +16,6 @@ class ChooseCityTableViewCell: UITableViewCell {
         return label
     }()
     
-    
     var city: City? {
         didSet {
             setupCell()
@@ -56,7 +55,6 @@ class ChooseCityTableViewCell: UITableViewCell {
 extension ChooseCityTableViewCell {
     private func setConstraints() {
         
-        
         NSLayoutConstraint.activate([
             cityLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             cityLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
@@ -64,6 +62,5 @@ extension ChooseCityTableViewCell {
             cityLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
 
         ])
-        
     }
 }

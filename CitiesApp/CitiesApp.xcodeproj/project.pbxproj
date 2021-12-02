@@ -11,7 +11,7 @@
 		50872BE82758A5AE00AA021A /* PresentCreateVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BE72758A5AE00AA021A /* PresentCreateVCProtocol.swift */; };
 		50872BEE2758FD6000AA021A /* ChooseColorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BED2758FD5F00AA021A /* ChooseColorProtocol.swift */; };
 		50872BF02759016100AA021A /* UpdateCurrentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BEF2759016100AA021A /* UpdateCurrentList.swift */; };
-		50872BF22759175C00AA021A /* GGGG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BF12759175C00AA021A /* GGGG.swift */; };
+		50872BF92759817300AA021A /* SaveNewListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BF82759817300AA021A /* SaveNewListProtocol.swift */; };
 		50D369852754DA6C00A8F8FF /* ColorFromHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */; };
 		50D369872754F8D500A8F8FF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369862754F8D500A8F8FF /* CollectionViewCell.swift */; };
 		50D369CA27555F1B00A8F8FF /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369C927555F1B00A8F8FF /* List.swift */; };
@@ -26,7 +26,7 @@
 		50FCEA71274F750900ADE605 /* CitiesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA70274F750900ADE605 /* CitiesAppUITests.swift */; };
 		50FCEA73274F750900ADE605 /* CitiesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA72274F750900ADE605 /* CitiesAppUITestsLaunchTests.swift */; };
 		50FCEA81274F757700ADE605 /* CurrentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA80274F757700ADE605 /* CurrentListViewController.swift */; };
-		50FCEA83274F777F00ADE605 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA82274F777F00ADE605 /* SecondViewController.swift */; };
+		50FCEA83274F777F00ADE605 /* ChangeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA82274F777F00ADE605 /* ChangeListViewController.swift */; };
 		50FCEA87274F9D2400ADE605 /* CreateNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA86274F9D2400ADE605 /* CreateNewListViewController.swift */; };
 		50FCEA8B274F9F7600ADE605 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA89274F9F7600ADE605 /* UIStackView+Ext.swift */; };
 		50FCEA8C274F9F7600ADE605 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA8A274F9F7600ADE605 /* UIViewController+Ext.swift */; };
@@ -64,7 +64,7 @@
 		50872BE72758A5AE00AA021A /* PresentCreateVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCreateVCProtocol.swift; sourceTree = "<group>"; };
 		50872BED2758FD5F00AA021A /* ChooseColorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseColorProtocol.swift; sourceTree = "<group>"; };
 		50872BEF2759016100AA021A /* UpdateCurrentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentList.swift; sourceTree = "<group>"; };
-		50872BF12759175C00AA021A /* GGGG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGGG.swift; sourceTree = "<group>"; };
+		50872BF82759817300AA021A /* SaveNewListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewListProtocol.swift; sourceTree = "<group>"; };
 		50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFromHexExtension.swift; sourceTree = "<group>"; };
 		50D369862754F8D500A8F8FF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		50D369C927555F1B00A8F8FF /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		50FCEA70274F750900ADE605 /* CitiesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesAppUITests.swift; sourceTree = "<group>"; };
 		50FCEA72274F750900ADE605 /* CitiesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		50FCEA80274F757700ADE605 /* CurrentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentListViewController.swift; sourceTree = "<group>"; };
-		50FCEA82274F777F00ADE605 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		50FCEA82274F777F00ADE605 /* ChangeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeListViewController.swift; sourceTree = "<group>"; };
 		50FCEA86274F9D2400ADE605 /* CreateNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewListViewController.swift; sourceTree = "<group>"; };
 		50FCEA89274F9F7600ADE605 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		50FCEA8A274F9F7600ADE605 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -189,10 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				50FCEA80274F757700ADE605 /* CurrentListViewController.swift */,
-				50FCEA82274F777F00ADE605 /* SecondViewController.swift */,
+				50FCEA82274F777F00ADE605 /* ChangeListViewController.swift */,
 				50FCEA86274F9D2400ADE605 /* CreateNewListViewController.swift */,
 				50FCEAA12753657E00ADE605 /* ChooseColorViewCOntroller.swift */,
-				50872BF12759175C00AA021A /* GGGG.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -237,6 +236,7 @@
 				50872BE72758A5AE00AA021A /* PresentCreateVCProtocol.swift */,
 				50872BED2758FD5F00AA021A /* ChooseColorProtocol.swift */,
 				50872BEF2759016100AA021A /* UpdateCurrentList.swift */,
+				50872BF82759817300AA021A /* SaveNewListProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -509,18 +509,18 @@
 				50872BF02759016100AA021A /* UpdateCurrentList.swift in Sources */,
 				50D369D0275769DB00A8F8FF /* UIButton Extension.swift in Sources */,
 				50FCEAA42754BEE700ADE605 /* ColorTableViewCell.swift in Sources */,
-				50FCEA83274F777F00ADE605 /* SecondViewController.swift in Sources */,
+				50FCEA83274F777F00ADE605 /* ChangeListViewController.swift in Sources */,
 				50D369CC27555F3000A8F8FF /* ListService.swift in Sources */,
 				50FCEA57274F750700ADE605 /* CitiesApp.xcdatamodeld in Sources */,
 				50FCEA87274F9D2400ADE605 /* CreateNewListViewController.swift in Sources */,
 				50FCEA92274FB34B00ADE605 /* City.swift in Sources */,
 				50FCEA81274F757700ADE605 /* CurrentListViewController.swift in Sources */,
 				50D369872754F8D500A8F8FF /* CollectionViewCell.swift in Sources */,
-				50872BF22759175C00AA021A /* GGGG.swift in Sources */,
 				50FCEAA62754C01C00ADE605 /* HeaderTableViewCell.swift in Sources */,
 				50FCEA94274FB67100ADE605 /* CitiesService.swift in Sources */,
 				50D369852754DA6C00A8F8FF /* ColorFromHexExtension.swift in Sources */,
 				50FCEA8C274F9F7600ADE605 /* UIViewController+Ext.swift in Sources */,
+				50872BF92759817300AA021A /* SaveNewListProtocol.swift in Sources */,
 				50872BEE2758FD6000AA021A /* ChooseColorProtocol.swift in Sources */,
 				50FCEA4D274F750700ADE605 /* AppDelegate.swift in Sources */,
 				50D369CA27555F1B00A8F8FF /* List.swift in Sources */,

@@ -33,7 +33,7 @@ class ColorTableViewCell: UITableViewCell {
         switch indexPath.section {
         case 0: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("BE2813")
         case 1: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("F07F5A")
-        case 2: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("F07F5A")
+        case 2: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("F3B53B")
         case 3: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("467C24")
         case 4: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("2D7FC1")
         case 5: backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX("1A4766")

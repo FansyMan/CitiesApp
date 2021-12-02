@@ -14,11 +14,17 @@ class CurrentListViewController: UIViewController, FloatingPanelControllerDelega
        let tableView = UITableView()
         tableView.backgroundColor = .white
         tableView.bounces = false
-//        tableView.layer.borderWidth = 0
         tableView.register(CurrentListTableViewCell.self, forCellReuseIdentifier: "CurrentListTableViewCell")
-        tableView.isUserInteractionEnabled = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }()
+    
+    private let listDashImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "list.dash")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     private let tapBarView: UIView = {
@@ -40,8 +46,9 @@ class CurrentListViewController: UIViewController, FloatingPanelControllerDelega
         let button = UIButton(type: .system)
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.systemBlue.cgColor
-        button.tintColor = UIColor.systemBlue
-        button.setTitle("Создать", for: .normal)
+        button.tintColor = .black
+        button.layer.cornerRadius = 25
+        button.setTitle("Выбрать", for: .normal)
         button.addTarget(self, action: #selector(goToSecondViewController), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -50,6 +57,7 @@ class CurrentListViewController: UIViewController, FloatingPanelControllerDelega
     var currentList: CityList?
     var cities: [City] = []
     var service: ListService!
+    let fps = FloatingPanelController()
 
     
     // MARK: - View Did Load
@@ -61,19 +69,16 @@ class CurrentListViewController: UIViewController, FloatingPanelControllerDelega
         setConstraints()
         setupDelegates()
         service = ListService()
+        titleLabel.text = currentList?.shortName
         
-        
-        
-        let fps = FloatingPanelController()
         
         fps.delegate = self
-        
-        let destinationVC = SecondViewController()
+        let destinationVC = ChangeListViewController()
+        destinationVC.listDelegate = self
         fps.set(contentViewController: destinationVC)
-        
+
         fps.addPanel(toParent: self)
-        
-        
+        fps.hide()
         
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized(gestureRecognizer:)))
             self.tableView.addGestureRecognizer(longpress)
@@ -82,24 +87,16 @@ class CurrentListViewController: UIViewController, FloatingPanelControllerDelega
     // MARK: - View Will Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let allLists = service.getKists()
-//        currentList = allLists[2]
-        let listTitle = currentList?.shortName
-        titleLabel.text = listTitle
-        guard let currentList = currentList else { return }
-        cities = currentList.cities!
-        tableView.reloadData()
-        
     }
     
     // MARK: - Setup Views
     private func setupViews() {
 
         view.addSubview(titleLabel)
-        view.addSubview(chooseCurrentListButton)
         view.addSubview(tableView)
-//        view.addSubview(tapBarView)
-//        tapBarView.addSubview(chooseCurrentListButton)
+        view.addSubview(tapBarView)
+        tapBarView.addSubview(listDashImage)
+        tapBarView.addSubview(chooseCurrentListButton)
     }
     
     // MARK: - SetupDelegates
@@ -107,6 +104,7 @@ class CurrentListViewController: UIViewController, FloatingPanelControllerDelega
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     
     // MARK: - Gesture Setup
     @objc func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
@@ -194,10 +192,7 @@ class CurrentListViewController: UIViewController, FloatingPanelControllerDelega
     }
     
     @objc func goToSecondViewController() {
-        let destinationVC = GGGG()
-        destinationVC.modalPresentationStyle = .fullScreen
-        destinationVC.listDelegate = self
-        present(destinationVC, animated: true, completion: nil)
+        fps.show(animated: true, completion: nil)
     }
 }
 
@@ -211,39 +206,33 @@ extension CurrentListViewController {
         ])
         
         NSLayoutConstraint.activate([
-            chooseCurrentListButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            chooseCurrentListButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            chooseCurrentListButton.widthAnchor.constraint(equalToConstant: 200),
+            tapBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            tapBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tapBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tapBarView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: tapBarView.topAnchor, constant: 0)
+        ])
+                
+        NSLayoutConstraint.activate([
+            chooseCurrentListButton.centerYAnchor.constraint(equalTo: tapBarView.centerYAnchor),
+            chooseCurrentListButton.trailingAnchor.constraint(equalTo: tapBarView.trailingAnchor, constant: -20),
+            chooseCurrentListButton.widthAnchor.constraint(equalToConstant: 150),
             chooseCurrentListButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-        
-        
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: chooseCurrentListButton.bottomAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            listDashImage.centerYAnchor.constraint(equalTo: tapBarView.centerYAnchor),
+            listDashImage.leadingAnchor.constraint(equalTo: tapBarView.leadingAnchor, constant: 40),
+            listDashImage.widthAnchor.constraint(equalToConstant: 50),
+            listDashImage.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        
-        
-//        NSLayoutConstraint.activate([
-//            tapBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-//            tapBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-//            tapBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-//            tapBarView.heightAnchor.constraint(equalToConstant: 100)
-//        ])
-        
-//        NSLayoutConstraint.activate([
-//            chooseCurrentListButton.centerYAnchor.constraint(equalTo: tapBarView.centerYAnchor),
-//            chooseCurrentListButton.trailingAnchor.constraint(equalTo: tapBarView.trailingAnchor, constant: -20),
-//            chooseCurrentListButton.widthAnchor.constraint(equalToConstant: 100),
-//            chooseCurrentListButton.heightAnchor.constraint(equalToConstant: 40)
-//        ])
-        
     }
-
 }
 
 // MARK: - TableView Setups
@@ -255,50 +244,24 @@ extension CurrentListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentListTableViewCell", for: indexPath) as! CurrentListTableViewCell
         cell.city = cities[indexPath.row]
-        
-        if cell.isSelected
-                {
-            cell.isSelected = false
-            if cell.accessoryType == UITableViewCell.AccessoryType.none
-                    {
-                cell.accessoryType = UITableViewCell.AccessoryType.checkmark
-                    }
-                    else
-                    {
-                        cell.accessoryType = UITableViewCell.AccessoryType.none
-                    }
-                }
-        
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        if cell!.isSelected
-                {
-            cell!.isSelected = false
-            if cell!.accessoryType == UITableViewCell.AccessoryType.none
-                    {
-                cell!.accessoryType = UITableViewCell.AccessoryType.checkmark
-                    }
-                    else
-                    {
-                        cell!.accessoryType = UITableViewCell.AccessoryType.none
-                    }
-                }
-    }
 }
 
 extension CurrentListViewController: UpdateCurrentList {
     func updateCityList(list: CityList) {
+       
         currentList = list
+        cities = currentList!.cities
+        titleLabel.text = currentList?.shortName
+        chooseCurrentListButton.backgroundColor = UIColor().colorFromHEX(currentList!.color)
+        chooseCurrentListButton.setTitle(currentList?.shortName, for: .normal)
         tableView.reloadData()
+        fps.hide(animated: true, completion: nil)
     }
     
     

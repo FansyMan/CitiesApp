@@ -10,7 +10,6 @@ import Foundation
 struct City {
     let name: String
     let age: String
-    var picked: Bool
 }
 
 
