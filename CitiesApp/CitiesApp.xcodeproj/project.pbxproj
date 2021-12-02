@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43E2C93D81124D7F8CEDCC4C /* Pods_CitiesApp_CitiesAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB9F9E923F02A7205783067 /* Pods_CitiesApp_CitiesAppUITests.framework */; };
+		50872BE82758A5AE00AA021A /* PresentCreateVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BE72758A5AE00AA021A /* PresentCreateVCProtocol.swift */; };
+		50872BEE2758FD6000AA021A /* ChooseColorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BED2758FD5F00AA021A /* ChooseColorProtocol.swift */; };
+		50872BF02759016100AA021A /* UpdateCurrentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BEF2759016100AA021A /* UpdateCurrentList.swift */; };
+		50872BF22759175C00AA021A /* GGGG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50872BF12759175C00AA021A /* GGGG.swift */; };
 		50D369852754DA6C00A8F8FF /* ColorFromHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */; };
 		50D369872754F8D500A8F8FF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369862754F8D500A8F8FF /* CollectionViewCell.swift */; };
 		50D369CA27555F1B00A8F8FF /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369C927555F1B00A8F8FF /* List.swift */; };
 		50D369CC27555F3000A8F8FF /* ListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369CB27555F2F00A8F8FF /* ListService.swift */; };
 		50D369CE2755608000A8F8FF /* CurrentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369CD2755608000A8F8FF /* CurrentListTableViewCell.swift */; };
+		50D369D0275769DB00A8F8FF /* UIButton Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D369CF275769DB00A8F8FF /* UIButton Extension.swift */; };
 		50FCEA4D274F750700ADE605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA4C274F750700ADE605 /* AppDelegate.swift */; };
 		50FCEA57274F750700ADE605 /* CitiesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA55274F750700ADE605 /* CitiesApp.xcdatamodeld */; };
 		50FCEA59274F750900ADE605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50FCEA58274F750900ADE605 /* Assets.xcassets */; };
@@ -21,7 +27,6 @@
 		50FCEA73274F750900ADE605 /* CitiesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA72274F750900ADE605 /* CitiesAppUITestsLaunchTests.swift */; };
 		50FCEA81274F757700ADE605 /* CurrentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA80274F757700ADE605 /* CurrentListViewController.swift */; };
 		50FCEA83274F777F00ADE605 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA82274F777F00ADE605 /* SecondViewController.swift */; };
-		50FCEA85274F786100ADE605 /* TapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA84274F786100ADE605 /* TapBarController.swift */; };
 		50FCEA87274F9D2400ADE605 /* CreateNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA86274F9D2400ADE605 /* CreateNewListViewController.swift */; };
 		50FCEA8B274F9F7600ADE605 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA89274F9F7600ADE605 /* UIStackView+Ext.swift */; };
 		50FCEA8C274F9F7600ADE605 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEA8A274F9F7600ADE605 /* UIViewController+Ext.swift */; };
@@ -31,6 +36,8 @@
 		50FCEAA22753657E00ADE605 /* ChooseColorViewCOntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEAA12753657E00ADE605 /* ChooseColorViewCOntroller.swift */; };
 		50FCEAA42754BEE700ADE605 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEAA32754BEE700ADE605 /* ColorTableViewCell.swift */; };
 		50FCEAA62754C01C00ADE605 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCEAA52754C01C00ADE605 /* HeaderTableViewCell.swift */; };
+		552CEF9DC26C287EA7B3C4A3 /* Pods_CitiesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808367A0A93D5B8654CEC61A /* Pods_CitiesApp.framework */; };
+		75B4BAFB161F996EFB9299D5 /* Pods_CitiesAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0603948154E9B8BD36C3462 /* Pods_CitiesAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,11 +58,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C412E7D0A3627BF915EB44A /* Pods-CitiesApp-CitiesAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CitiesApp-CitiesAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-CitiesApp-CitiesAppUITests/Pods-CitiesApp-CitiesAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2218D92A070C4C153C6C3D9C /* Pods-CitiesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CitiesApp.release.xcconfig"; path = "Target Support Files/Pods-CitiesApp/Pods-CitiesApp.release.xcconfig"; sourceTree = "<group>"; };
+		3A7A4D85E5E7771859DAA243 /* Pods-CitiesAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CitiesAppTests.release.xcconfig"; path = "Target Support Files/Pods-CitiesAppTests/Pods-CitiesAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		50872BE72758A5AE00AA021A /* PresentCreateVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCreateVCProtocol.swift; sourceTree = "<group>"; };
+		50872BED2758FD5F00AA021A /* ChooseColorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseColorProtocol.swift; sourceTree = "<group>"; };
+		50872BEF2759016100AA021A /* UpdateCurrentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentList.swift; sourceTree = "<group>"; };
+		50872BF12759175C00AA021A /* GGGG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGGG.swift; sourceTree = "<group>"; };
 		50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFromHexExtension.swift; sourceTree = "<group>"; };
 		50D369862754F8D500A8F8FF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		50D369C927555F1B00A8F8FF /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		50D369CB27555F2F00A8F8FF /* ListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListService.swift; sourceTree = "<group>"; };
 		50D369CD2755608000A8F8FF /* CurrentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentListTableViewCell.swift; sourceTree = "<group>"; };
+		50D369CF275769DB00A8F8FF /* UIButton Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton Extension.swift"; sourceTree = "<group>"; };
 		50FCEA49274F750700ADE605 /* CitiesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CitiesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FCEA4C274F750700ADE605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50FCEA56274F750700ADE605 /* CitiesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CitiesApp.xcdatamodel; sourceTree = "<group>"; };
@@ -69,7 +84,6 @@
 		50FCEA72274F750900ADE605 /* CitiesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		50FCEA80274F757700ADE605 /* CurrentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentListViewController.swift; sourceTree = "<group>"; };
 		50FCEA82274F777F00ADE605 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		50FCEA84274F786100ADE605 /* TapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarController.swift; sourceTree = "<group>"; };
 		50FCEA86274F9D2400ADE605 /* CreateNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewListViewController.swift; sourceTree = "<group>"; };
 		50FCEA89274F9F7600ADE605 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		50FCEA8A274F9F7600ADE605 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -79,6 +93,12 @@
 		50FCEAA12753657E00ADE605 /* ChooseColorViewCOntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseColorViewCOntroller.swift; sourceTree = "<group>"; };
 		50FCEAA32754BEE700ADE605 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		50FCEAA52754C01C00ADE605 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		7CB9F9E923F02A7205783067 /* Pods_CitiesApp_CitiesAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CitiesApp_CitiesAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		808367A0A93D5B8654CEC61A /* Pods_CitiesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CitiesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81C53655FCAF48C73C9FE6AF /* Pods-CitiesAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CitiesAppTests.debug.xcconfig"; path = "Target Support Files/Pods-CitiesAppTests/Pods-CitiesAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D4E60ADEFC35CFF2CA9101B3 /* Pods-CitiesApp-CitiesAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CitiesApp-CitiesAppUITests.release.xcconfig"; path = "Target Support Files/Pods-CitiesApp-CitiesAppUITests/Pods-CitiesApp-CitiesAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E4E4C38214C147819B2F11B9 /* Pods-CitiesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CitiesApp.debug.xcconfig"; path = "Target Support Files/Pods-CitiesApp/Pods-CitiesApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F0603948154E9B8BD36C3462 /* Pods_CitiesAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CitiesAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				552CEF9DC26C287EA7B3C4A3 /* Pods_CitiesApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B4BAFB161F996EFB9299D5 /* Pods_CitiesAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E2C93D81124D7F8CEDCC4C /* Pods_CitiesApp_CitiesAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +136,8 @@
 				50FCEA65274F750900ADE605 /* CitiesAppTests */,
 				50FCEA6F274F750900ADE605 /* CitiesAppUITests */,
 				50FCEA4A274F750700ADE605 /* Products */,
+				CA0D333EF749C344DE0E79B3 /* Pods */,
+				BE8D49F5D0AD52CCC34748F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,9 +190,9 @@
 			children = (
 				50FCEA80274F757700ADE605 /* CurrentListViewController.swift */,
 				50FCEA82274F777F00ADE605 /* SecondViewController.swift */,
-				50FCEA84274F786100ADE605 /* TapBarController.swift */,
 				50FCEA86274F9D2400ADE605 /* CreateNewListViewController.swift */,
 				50FCEAA12753657E00ADE605 /* ChooseColorViewCOntroller.swift */,
+				50872BF12759175C00AA021A /* GGGG.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +203,7 @@
 				50FCEA89274F9F7600ADE605 /* UIStackView+Ext.swift */,
 				50FCEA8A274F9F7600ADE605 /* UIViewController+Ext.swift */,
 				50D369842754DA6C00A8F8FF /* ColorFromHexExtension.swift */,
+				50D369CF275769DB00A8F8FF /* UIButton Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,8 +234,34 @@
 		50FCEA9E27535FE700ADE605 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				50872BE72758A5AE00AA021A /* PresentCreateVCProtocol.swift */,
+				50872BED2758FD5F00AA021A /* ChooseColorProtocol.swift */,
+				50872BEF2759016100AA021A /* UpdateCurrentList.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BE8D49F5D0AD52CCC34748F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				808367A0A93D5B8654CEC61A /* Pods_CitiesApp.framework */,
+				7CB9F9E923F02A7205783067 /* Pods_CitiesApp_CitiesAppUITests.framework */,
+				F0603948154E9B8BD36C3462 /* Pods_CitiesAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA0D333EF749C344DE0E79B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4E4C38214C147819B2F11B9 /* Pods-CitiesApp.debug.xcconfig */,
+				2218D92A070C4C153C6C3D9C /* Pods-CitiesApp.release.xcconfig */,
+				1C412E7D0A3627BF915EB44A /* Pods-CitiesApp-CitiesAppUITests.debug.xcconfig */,
+				D4E60ADEFC35CFF2CA9101B3 /* Pods-CitiesApp-CitiesAppUITests.release.xcconfig */,
+				81C53655FCAF48C73C9FE6AF /* Pods-CitiesAppTests.debug.xcconfig */,
+				3A7A4D85E5E7771859DAA243 /* Pods-CitiesAppTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50FCEA76274F750900ADE605 /* Build configuration list for PBXNativeTarget "CitiesApp" */;
 			buildPhases = (
+				073ABB00C2FC73753F9EFE8C /* [CP] Check Pods Manifest.lock */,
 				50FCEA45274F750700ADE605 /* Sources */,
 				50FCEA46274F750700ADE605 /* Frameworks */,
 				50FCEA47274F750700ADE605 /* Resources */,
+				8493286E96086FCE6F949A0E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,6 +290,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50FCEA79274F750900ADE605 /* Build configuration list for PBXNativeTarget "CitiesAppTests" */;
 			buildPhases = (
+				AEF434B8B6F13CF688694BA4 /* [CP] Check Pods Manifest.lock */,
 				50FCEA5E274F750900ADE605 /* Sources */,
 				50FCEA5F274F750900ADE605 /* Frameworks */,
 				50FCEA60274F750900ADE605 /* Resources */,
@@ -254,9 +309,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50FCEA7C274F750900ADE605 /* Build configuration list for PBXNativeTarget "CitiesAppUITests" */;
 			buildPhases = (
+				7621A1E1499B6F089132C37D /* [CP] Check Pods Manifest.lock */,
 				50FCEA68274F750900ADE605 /* Sources */,
 				50FCEA69274F750900ADE605 /* Frameworks */,
 				50FCEA6A274F750900ADE605 /* Resources */,
+				0E59180FC647B65589ABAC3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,6 +394,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		073ABB00C2FC73753F9EFE8C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CitiesApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0E59180FC647B65589ABAC3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CitiesApp-CitiesAppUITests/Pods-CitiesApp-CitiesAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CitiesApp-CitiesAppUITests/Pods-CitiesApp-CitiesAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CitiesApp-CitiesAppUITests/Pods-CitiesApp-CitiesAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7621A1E1499B6F089132C37D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CitiesApp-CitiesAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8493286E96086FCE6F949A0E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CitiesApp/Pods-CitiesApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CitiesApp/Pods-CitiesApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CitiesApp/Pods-CitiesApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEF434B8B6F13CF688694BA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CitiesAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		50FCEA45274F750700ADE605 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -346,21 +506,25 @@
 				50FCEAA22753657E00ADE605 /* ChooseColorViewCOntroller.swift in Sources */,
 				50FCEA8B274F9F7600ADE605 /* UIStackView+Ext.swift in Sources */,
 				50D369CE2755608000A8F8FF /* CurrentListTableViewCell.swift in Sources */,
+				50872BF02759016100AA021A /* UpdateCurrentList.swift in Sources */,
+				50D369D0275769DB00A8F8FF /* UIButton Extension.swift in Sources */,
 				50FCEAA42754BEE700ADE605 /* ColorTableViewCell.swift in Sources */,
 				50FCEA83274F777F00ADE605 /* SecondViewController.swift in Sources */,
 				50D369CC27555F3000A8F8FF /* ListService.swift in Sources */,
-				50FCEA85274F786100ADE605 /* TapBarController.swift in Sources */,
 				50FCEA57274F750700ADE605 /* CitiesApp.xcdatamodeld in Sources */,
 				50FCEA87274F9D2400ADE605 /* CreateNewListViewController.swift in Sources */,
 				50FCEA92274FB34B00ADE605 /* City.swift in Sources */,
 				50FCEA81274F757700ADE605 /* CurrentListViewController.swift in Sources */,
 				50D369872754F8D500A8F8FF /* CollectionViewCell.swift in Sources */,
+				50872BF22759175C00AA021A /* GGGG.swift in Sources */,
 				50FCEAA62754C01C00ADE605 /* HeaderTableViewCell.swift in Sources */,
 				50FCEA94274FB67100ADE605 /* CitiesService.swift in Sources */,
 				50D369852754DA6C00A8F8FF /* ColorFromHexExtension.swift in Sources */,
 				50FCEA8C274F9F7600ADE605 /* UIViewController+Ext.swift in Sources */,
+				50872BEE2758FD6000AA021A /* ChooseColorProtocol.swift in Sources */,
 				50FCEA4D274F750700ADE605 /* AppDelegate.swift in Sources */,
 				50D369CA27555F1B00A8F8FF /* List.swift in Sources */,
+				50872BE82758A5AE00AA021A /* PresentCreateVCProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +690,7 @@
 		};
 		50FCEA77274F750900ADE605 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4E4C38214C147819B2F11B9 /* Pods-CitiesApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -553,6 +718,7 @@
 		};
 		50FCEA78274F750900ADE605 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2218D92A070C4C153C6C3D9C /* Pods-CitiesApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -580,6 +746,7 @@
 		};
 		50FCEA7A274F750900ADE605 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81C53655FCAF48C73C9FE6AF /* Pods-CitiesAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -605,6 +772,7 @@
 		};
 		50FCEA7B274F750900ADE605 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A7A4D85E5E7771859DAA243 /* Pods-CitiesAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -630,6 +798,7 @@
 		};
 		50FCEA7D274F750900ADE605 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C412E7D0A3627BF915EB44A /* Pods-CitiesApp-CitiesAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -653,6 +822,7 @@
 		};
 		50FCEA7E274F750900ADE605 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4E60ADEFC35CFF2CA9101B3 /* Pods-CitiesApp-CitiesAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -13,6 +13,8 @@ class ChooseColorViewController: UITableViewController {
     
     let headerNames = ["RED","ORANGE","YELLOW","GREEN","BLUE","DEEP BLUE","PURPLE"]
     
+    weak var colorDelegate: ChooseColorProtocol?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +71,13 @@ class ChooseColorViewController: UITableViewController {
         default: setColors(color: "FFFFFF")
         }
         
+        dismiss(animated: true, completion: nil)
+
 
     }
     
-    private func setColors(color: String) {
-        let destinationVC = CreateNewListViewController()
-        destinationVC.hexColorCell = color
-        self.navigationController?.popViewController(animated: true)
+    func setColors(color: String) {
+        colorDelegate?.updateColor(color: color)
     }
     
     

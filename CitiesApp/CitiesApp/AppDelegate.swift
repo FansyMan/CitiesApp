@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         
-        window?.rootViewController = TapBarController()
+        window?.rootViewController = CurrentListViewController()
         window?.makeKeyAndVisible()
         return true
     }

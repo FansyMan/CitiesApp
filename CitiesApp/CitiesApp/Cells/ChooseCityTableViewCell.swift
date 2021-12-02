@@ -11,20 +11,12 @@ class ChooseCityTableViewCell: UITableViewCell {
     
     let cityLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let checkBoxImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.isUserInteractionEnabled = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
     
-    var stackView = UIStackView()
     var city: City? {
         didSet {
             setupCell()
@@ -48,57 +40,30 @@ class ChooseCityTableViewCell: UITableViewCell {
     
     // MARK: - Setup Views
     func setupViews() {
-        self.backgroundColor = .clear
-        self.selectionStyle = .none
-        self.addSubview(checkBoxImage)
+//        self.backgroundColor = .clear
+//        self.selectionStyle = .none
         self.addSubview(cityLabel)
     }
     
     // MARK: - Setup Cell
     func setupCell() {
         cityLabel.text = city?.name
-        switch city?.picked {
-        case true:
-            checkBoxImage.image = UIImage(systemName: "checkmark.circle.fill")
-        case false:
-            checkBoxImage.image = UIImage(systemName: "circle")
-        default:
-            break
-        }
-        
-        let gestureRecognizer = UITapGestureRecognizer()
-        gestureRecognizer.addTarget(self, action: #selector(pickCity))
-        self.addGestureRecognizer(gestureRecognizer)
     }
     
-    // MARK: - Pick City OBJC Func
-    @objc func pickCity() {
-        switch city?.picked {
-        case true:
-            city?.picked = false
-        case false:
-            city?.picked = true
-        default:
-            break
-        }
-    }
 }
 
 // MARK: - Constraints
 extension ChooseCityTableViewCell {
     private func setConstraints() {
         
-        NSLayoutConstraint.activate([
-            checkBoxImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            checkBoxImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            checkBoxImage.widthAnchor.constraint(equalToConstant: 40),
-            checkBoxImage.heightAnchor.constraint(equalToConstant: 40)
-        ])
         
         NSLayoutConstraint.activate([
-            cityLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            cityLabel.leadingAnchor.constraint(equalTo: checkBoxImage.trailingAnchor, constant: 20),
-            cityLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+            cityLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            cityLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            cityLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            cityLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
+
         ])
-            }
+        
+    }
 }

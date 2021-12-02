@@ -50,7 +50,8 @@ class CreateNewListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.bounces = false
         tableView.layer.borderWidth = 0
-        tableView.register(ChooseCityTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.isUserInteractionEnabled = true
+        tableView.register(ChooseCityTableViewCell.self, forCellReuseIdentifier: "ChooseCityTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -104,8 +105,8 @@ class CreateNewListViewController: UIViewController {
     private var colorStackView = UIStackView()
     var cities: [City]!
     var service: CitiesService!
-    var hexColorCell = String()
-
+    var hexColorCell = "FFFFFF"
+    var choosenRows: [Int : Bool] = [:]
     
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -113,21 +114,24 @@ class CreateNewListViewController: UIViewController {
         
         service = CitiesService()
         cities = service.getCities()
-        hexColorCell = "2D038F"
         setupViews()
         setConstraints()
         setupDelegates()
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
+//        tableView.setEditing(true, animated: false)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(hexColorCell)
         colorButton.backgroundColor = UIColor().colorFromHEX(hexColorCell)
     }
     
     // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        title = "Create"
         view.addSubview(scrolView)
         view.addSubview(backgroundView)
         
@@ -160,18 +164,26 @@ class CreateNewListViewController: UIViewController {
                                shortName: shortNameTextField.text ?? "unknown",
                                longName: longNameTextField.text ?? "unknown",
                                cities: nil)
-        print(newList)
+        var choosenCities = [City]()
+       
+        for city in choosenRows {
+            let choosenCity = cities[city.key]
+            choosenCities.append(choosenCity)
+        }
+        
+        print(choosenCities)
     }
     
     @objc private func dismissCreatingNewList() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - ChooseColor Button
     @objc func chooseColor() {
         let destinationVC = ChooseColorViewController()
-        destinationVC.modalPresentationStyle = .automatic
-        navigationController?.pushViewController(destinationVC, animated: true)
+        destinationVC.modalPresentationStyle = .fullScreen
+        destinationVC.colorDelegate = self
+        present(destinationVC, animated: true, completion: nil)
     }
 }
 
@@ -238,17 +250,62 @@ extension CreateNewListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ChooseCityTableViewCell {
-            
-            let city = cities[indexPath.row]
-            cell.city = city
+         let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseCityTableViewCell", for: indexPath) as! ChooseCityTableViewCell
+        
+        let city = cities[indexPath.row]
+        cell.city = city
+        
+        if cell.isSelected
+                {
+            cell.isSelected = false
+            if cell.accessoryType == UITableViewCell.AccessoryType.none
+                    {
+                cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+                    }
+                    else
+                    {
+                        cell.accessoryType = UITableViewCell.AccessoryType.none
+                    }
+                }
             return cell
-        }
-        return UITableViewCell()
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+
+        if cell!.isSelected
+                {
+            cell!.isSelected = false
+            choosenRows[indexPath.row] = true
+
+            if cell!.accessoryType == UITableViewCell.AccessoryType.none
+                    {
+                cell!.accessoryType = UITableViewCell.AccessoryType.checkmark
+                    }
+                    else
+                    {
+                        cell!.accessoryType = UITableViewCell.AccessoryType.none
+                        choosenRows[indexPath.row] = nil
+                    }
+                }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        choosenRows.removeValue(forKey: indexPath.row)
+    }
+    
 }
 
+extension CreateNewListViewController: ChooseColorProtocol {
+    func updateColor(color: String) {
+        hexColorCell = color
+    }
+    
+    
+}

@@ -9,38 +9,23 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    private let backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 20
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.bounces = false
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .systemGray4
+        collectionView.isPagingEnabled = true
+        collectionView.contentInset = UIEdgeInsets(top: (140-120)/2, left: (UIScreen.main.bounds.width-120)/2, bottom: (140-120)/2, right: (UIScreen.main.bounds.width-120)/2)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
-    private let addNewListButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.systemBlue.cgColor
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
-        button.tintColor = UIColor.systemBlue
-        button.layer.cornerRadius = 40
-        button.addTarget(self, action: #selector(jumpToCreateNewListViewControler), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     private let cityLabel: UILabel = {
         let label = UILabel()
@@ -50,59 +35,59 @@ class SecondViewController: UIViewController {
         return label
     }()
     
-    private var fullScreenMode: Bool!
+    private let tapBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let chooseCurrentListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.tintColor = UIColor.systemBlue
+        button.layer.cornerRadius = 25
+        button.setTitle("Создать", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let listButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.tintColor = UIColor.systemBlue
+        button.layer.cornerRadius = 25
+        button.setImage(UIImage(systemName: "list.dash"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     var service: ListService!
     var allLists: [CityList]!
+    weak var listDelegate: UpdateCurrentList?
+    
+
     
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
-        title = "Second"
-        
         service = ListService()
         allLists = service.getKists()
         
         setupViews()
         setupDelegates()
         setConstraints()
-        swipesActions()
-        
     }
-    
-    // MARK: - Swipes Setup
-    private func swipesActions() {
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(fullScreenActivate))
-        swipeUp.direction = .up
-        backgroundView.addGestureRecognizer(swipeUp)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(fullScreenDismiss))
-        swipeDown.direction = .down
-        backgroundView.addGestureRecognizer(swipeDown)
-        
-    }
-    
-    // MARK: - Objc
-    @objc func fullScreenActivate() {
-        backgroundView.backgroundColor = .blue
-    }
-    
-    @objc func jumpToCreateNewListViewControler() {
-        let destinationVC = CreateNewListViewController()
-        navigationController?.pushViewController(destinationVC, animated: true)
-    }
-    
-    @objc func fullScreenDismiss() {
-        backgroundView.backgroundColor = .systemGray5
-    }
-    
     // MARK: - SetupViews
     private func setupViews() {
-        view.addSubview(backgroundView)
-        backgroundView.addSubview(addNewListButton)
-        backgroundView.addSubview(collectionView)
-        backgroundView.addSubview(cityLabel)
+        view.addSubview(tapBarView)
+        tapBarView.addSubview(chooseCurrentListButton)
+        tapBarView.addSubview(listButton)
+        view.addSubview(collectionView)
+        view.addSubview(cityLabel)
         
     }
     
@@ -119,28 +104,35 @@ extension SecondViewController {
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
-            backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            backgroundView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            backgroundView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/2)
+            tapBarView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25),
+            tapBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tapBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tapBarView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
         NSLayoutConstraint.activate([
-            addNewListButton.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
-            addNewListButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 15),
-            addNewListButton.widthAnchor.constraint(equalToConstant: 80),
-            addNewListButton.heightAnchor.constraint(equalToConstant: 80)
+            listButton.centerYAnchor.constraint(equalTo: tapBarView.centerYAnchor),
+            listButton.leadingAnchor.constraint(equalTo: tapBarView.leadingAnchor, constant: 20),
+            listButton.widthAnchor.constraint(equalToConstant: 100),
+            listButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
-            collectionView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: addNewListButton.trailingAnchor, constant: 5),
-            collectionView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -15),
-            collectionView.heightAnchor.constraint(equalToConstant: 100)
+            chooseCurrentListButton.centerYAnchor.constraint(equalTo: tapBarView.centerYAnchor),
+            chooseCurrentListButton.trailingAnchor.constraint(equalTo: tapBarView.trailingAnchor, constant: -20),
+            chooseCurrentListButton.widthAnchor.constraint(equalToConstant: 100),
+            chooseCurrentListButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
-            cityLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            collectionView.topAnchor.constraint(equalTo: tapBarView.bottomAnchor, constant: 20),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            collectionView.heightAnchor.constraint(equalToConstant: 140)
+        ])
+
+        NSLayoutConstraint.activate([
+            cityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cityLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20)
         ])
     }
@@ -148,38 +140,50 @@ extension SecondViewController {
 }
 
 // MARK: - Collection View Setups
-extension SecondViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension SecondViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allLists.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CollectionViewCell {
-            let list = allLists[indexPath.item]
-            cell.cityList = list
-            return cell
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+            
+        if indexPath == [0,0] {
+            cell.setupImage()
+        } else {
+            let list = allLists[indexPath.item-1]
+            cell.setupCell(cityList: list)
+            
         }
-        return UICollectionViewCell()
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 80)
+        return CGSize(width: 120, height: 120)
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath)  as? CollectionViewCell
         collectionView.bringSubviewToFront(selectedCell!)
 
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: [], animations: {
-            selectedCell?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            selectedCell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             })
         
-        let list = allLists[indexPath.item]
-        let destinaationVC = navigationController?.viewControllers[0] as? CurrentListViewController
-        destinaationVC?.currentList = list
-        cityLabel.text = list.shortName
+        if indexPath == [0,0] {
+            let destinationVC = CreateNewListViewController()
+            destinationVC.modalPresentationStyle = .automatic
+            present(destinationVC, animated: true, completion: nil)
+        } else {
         
+        let list = allLists[indexPath.item-1]
+        listDelegate?.updateCityList(list: list)
+        cityLabel.text = list.shortName
+        dismiss(animated: true, completion: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -187,8 +191,22 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: [], animations: {
             unselectedCell?.transform = .identity
         })
-        
-        
-        
     }
+    
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        let cellWithIncludingSpacing = 160 + layout.minimumLineSpacing
+//        
+//        var offset = targetContentOffset.pointee
+//        let index = (offset.x + scrollView.contentInset.left) / cellWithIncludingSpacing
+//        let roundedIndex = round(index)
+//        
+//        offset = CGPoint(x: roundedIndex * cellWithIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
+//        
+//        targetContentOffset.pointee = offset
+//        
+//        
+//    }
+    
+    
 }

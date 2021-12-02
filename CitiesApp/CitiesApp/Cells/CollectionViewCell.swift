@@ -9,36 +9,56 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    private let plusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .white
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = .cyan
+        imageView.frame.size.width = 120
+        imageView.frame.size.height = 120
+        imageView.layer.cornerRadius = 60
+
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     let backgroundViewOfCell: UIView = {
        var view = UIView()
        view.backgroundColor = .white
-       view.layer.cornerRadius = 40
+        view.layer.cornerRadius = 60
        view.translatesAutoresizingMaskIntoConstraints = false
        return view
    }()
     
-    var cityList: CityList? {
-        didSet{
-            setupCell()
-        }
-    }
-    
     // MARK: - Cell Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundViewOfCell.backgroundColor = .red
         setConstraints()
     }
     required init?(coder: NSCoder) {
         fatalError()
     }
     
-    // MARK: - Cell Setup
-    func setupCell() {
-        guard let cityList = cityList else { return }
-        let color = cityList.color
-        backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX(color)
+    func setupCell(cityList: CityList) {
+                    let color = cityList.color
+                    backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX(color)
+
     }
+    
+    func setupImage() {
+        plusImageView.image = UIImage(systemName: "plus")
+                    self.addSubview(plusImageView)
+    }
+    
+//    func setupCell(cityList: CityList, indexPath: IndexPath) {
+//        if indexPath == [0,0] {
+//            plusImageView.image = UIImage(systemName: "plus")
+//            self.addSubview(plusImageView)
+//        } else {
+//            let color = cityList.color
+//            backgroundViewOfCell.backgroundColor = UIColor().colorFromHEX(color)
+//        }
+//    }
     
     // MARK: - Constraints
     func setConstraints() {
